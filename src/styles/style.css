@@ -81,6 +81,48 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Top Gradients */
+.first-gradient {
+  position: absolute;
+  right: 12rem;
+  top: -6rem;
+  z-index: -10;
+  height: 31.25rem;
+  width: 31.25rem;
+  border-radius: 9999px;
+  background-color: var(--primary-light);
+  filter: blur(10rem);
+  animation: pulse-fast 4s ease-in-out infinite;
+}
+
+.second-gradient {
+  position: absolute;
+  left: -35rem;
+  top: -1rem;
+  z-index: -10;
+  height: 31.25rem;
+  width: 50rem;
+  border-radius: 9999px;
+  background-color: rgba(
+    3,
+    102,
+    214,
+    0.4
+  ); /* --primary-color with 40% opacity */
+  filter: blur(10rem);
+  animation: pulse-faster 2s ease-in-out infinite;
+}
+
+[data-theme='dark'] .first-gradient {
+  background-color: var(--primary-dark);
+  animation: pulse-slow 6s ease-in-out infinite;
+}
+
+[data-theme='dark'] .second-gradient {
+  background-color: rgba(3, 102, 214, 0.4);
+  animation: pulse-slower 5s ease-in-out infinite;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -235,7 +277,7 @@ input:checked + .slider:before {
   left: 0;
   width: 100%;
   height: var(--header-height);
-  background-color: var(--bg-color);
+  background: var(--bg-color);
   z-index: 999;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
@@ -248,6 +290,9 @@ input:checked + .slider:before {
 #header.scrolled {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   height: 60px;
+  opacity: 0.85;
+  backdrop-filter: blur(100000px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .header-content {
@@ -351,6 +396,7 @@ main {
   border-radius: 50%;
   box-shadow: var(--box-shadow);
   border: 3px solid var(--primary-color);
+  pointer-events: none;
 }
 
 .job-title {
@@ -829,6 +875,40 @@ footer {
   }
 }
 
+@media (min-width: 640px) {
+  .first-gradient {
+    width: 68.75rem;
+  }
+
+  .second-gradient {
+    width: 68.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .second-gradient {
+    left: -33rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .second-gradient {
+    left: -28rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .second-gradient {
+    left: -15rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .second-gradient {
+    left: -5rem;
+  }
+}
+
 /* Animation Classes */
 .fade-in {
   animation: fadeIn 1s ease-in-out;
@@ -856,6 +936,46 @@ footer {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes pulse-fast {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-faster {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes pulse-slower {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
   }
 }
 
